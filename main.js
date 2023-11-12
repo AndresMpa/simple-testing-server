@@ -26,7 +26,7 @@ const origins = {
 
 app.use(cors(origins));
 
-//routerApi(app);
+routerApi(app);
 
 app.listen(PORT, () => {
   console.log(`App is running on port ${PORT}`);
