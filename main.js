@@ -1,15 +1,15 @@
-const cors = require("cors");
 const express = require("express");
-const routerApi = require("./routes");
+const cors = require("cors");
 
-const HOST = process.env.HOST || "localhost";
-const PORT = process.env.PORT || 3000;
+const routerApi = require("./routes");
+const config = require("./config");
+
 const app = express();
 
 // This middleware is used to handle JSON
 app.use(express.json());
 
-const whiteList = [`http://${HOST}:${PORT}`];
+const whiteList = [`http://${config.host}:${config.port}`];
 
 const origins = {
   origin: (origin, callback) => {
@@ -25,4 +25,11 @@ app.use(cors(origins));
 
 routerApi(app);
 
-app.listen(PORT, () => console.log(`App is running on port ${PORT}`));
+console.log(config.port)
+  
+
+app.listen(config.port, () =>
+  console.log(
+    `App is running on port ${config.host}:${config.port}/${config.version}`,
+  ),
+);
