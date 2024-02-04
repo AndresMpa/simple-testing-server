@@ -22,11 +22,7 @@ const origins = {
 };
 
 app.use(cors(origins));
-
 routerApi(app);
-
-console.log(config.port)
-  
 
 app.listen(config.port, () =>
   console.log(
